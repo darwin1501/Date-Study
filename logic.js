@@ -35,7 +35,7 @@
 	  "sex": "M",
 	  "status": "Dead,Sat Feb 01 2020 00:00:00 GMT+0800 (Irkutsk Standard Time)",
 	  "symptoms": "fever,cough,sore throat,pneumonia,",
-	  "tested_positive": "2020-01-27T16:00:00.000Z",
+	  "tested_positive": "2020-01-26T16:00:00.000Z",
 	  "travel_history": "Yes Wuhan -> Hong Kong -> Cebu -> Dumaguete -> Manila"
 	},
 	{
@@ -53,7 +53,7 @@
 	  "sex": "F",
 	  "status": "Recovered,Fri Jan 31 2020 00:00:00 GMT+0800 (Irkutsk Standard Time)",
 	  "symptoms": "fever,coryza",
-	  "tested_positive": "2020-01-28T16:00:00.000Z",
+	  "tested_positive": "2020-01-26T16:00:00.000Z",
 	  "travel_history": "Yes Wuhan -> Hong Kong -> Cebu -> Bohol"
 	},
 	{
@@ -117,14 +117,35 @@ function showDays(){
 
 		}).map(function(getDates){
 
-			const dateArray = getDates.tested_positive
+			const dateArray = [getDates.tested_positive]
 			//look all matching dates from lastweek of january in json
-			return newDate === dateArray
+
+			return dateArray
+
+			// return newDate === dateArray
+			
+
 		})
-		//count result
-			const countCases = Object.keys(matchDate).length;
-			console.log(newDate+' : '+countCases);
-		//expected out put 'date: (number of tested positive on that day)'
+
+		//count all tested positive on each day
+		var res = [];
+					matchDate.forEach((element) => {
+		  // console.log(element)
+
+		  // return newDate === element
+
+		    if (res[element]) {
+		        res[element] += 1;
+		    } else {
+		        res[element] = 1;
+		    }
+	
+		})
+					return console.log(res)
+		// count result
+			// const countCases = Object.keys(matchDate).length;
+			// console.log(newDate+' : '+countCases);
+		// expected out put 'date: (number of tested positive on that day)'
 	}
 }
 showDays()
