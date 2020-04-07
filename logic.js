@@ -118,7 +118,7 @@ function showDays(){
 		}).map(function(getDates){
 
 			const dateArray = getDates.tested_positive
-
+			//lool all matching dates from lastweek of january in json
 			return newDate === dateArray
 		})
 		//count result
